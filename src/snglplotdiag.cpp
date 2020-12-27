@@ -58,3 +58,31 @@ void snglplotdiag::on_statistic_var_currentIndexChanged(const QString &)
     connect(qm,&QueryMaster::query_finished_,this,&snglplotdiag::query_to_range_);
     emit query_(queryminmax);
 }
+
+void snglplotdiag::on_buttonBox_accepted()
+{
+    //
+    PlotTypeEnum gtype;
+    switch (ui->chart->currentIndex()) {
+    case 0:
+        gtype = PlotTypeEnum::piechart;
+        break;
+    case 1:
+        gtype = PlotTypeEnum::histogram;
+        break;
+    case 2:
+        gtype = PlotTypeEnum::linechart;
+        break;
+    }
+    emit plot_(ui->statistic_var->currentText(),
+              ui->timestart->dateTime().toTime_t(),
+              ui->timeend->dateTime().toTime_t(),
+              ui->Startvalue->value(),
+              ui->Endvalue->value(),
+              ui->gridnum->currentIndex(),
+              ui->stepvalue->value(),
+              ui->sumcnt->checkState()==Qt::Checked,
+              ui->accdistr->checkState()==Qt::Checked,
+              ui->smooth->checkState()==Qt::Checked,
+              gtype);
+}

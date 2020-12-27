@@ -7,6 +7,7 @@
 #include <vector>
 #include <QtSql>
 #include "queryMaster.hpp"
+#include "plotter.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,10 +28,13 @@ public:
 private slots:
 
     void on_statistic_var_currentIndexChanged(const QString &arg1);
+    void on_buttonBox_accepted();
+
 public slots:
     void query_to_range_(QSqlQuery* q,QueryMaster* sender);
 signals:
     void query_(QString q);
+    void plot_(QString var, int from, int to,double startvalue, double endvalue, int gridnum, double step,bool sumcnt, bool accumul, bool smooth, PlotTypeEnum graphtype);
 private:
     Ui::snglplotdiag *ui;
 };

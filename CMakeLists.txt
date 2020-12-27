@@ -32,8 +32,8 @@ endif(CCACHE_FOUND)
 #    endif()
 #endif()
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Charts Sql REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Charts Sql REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Charts Sql Location REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Charts Sql Location REQUIRED)
 
 file(GLOB_RECURSE PROJECT_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} src/*)
 
@@ -53,4 +53,4 @@ else()
     endif()
 endif()
 
-target_link_libraries(Avorhod PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Charts Qt${QT_VERSION_MAJOR}::Sql)
+target_link_libraries(Avorhod PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Charts Qt${QT_VERSION_MAJOR}::Sql Qt${QT_VERSION_MAJOR}::Location)

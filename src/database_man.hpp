@@ -8,6 +8,7 @@
 #include <vector>
 #include <deque>
 
+
 #include "database.hpp"
 
 class DatabaseManipulator :public QObject{

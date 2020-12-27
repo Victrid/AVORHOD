@@ -56,11 +56,6 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Thermal View</string>
-       </attribute>
-      </widget>
      </widget>
     </item>
    </layout>
@@ -83,6 +78,9 @@
     <addaction name="actionQuit"/>
    </widget>
    <widget class="QMenu" name="menuPlot">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="title">
      <string>Plot</string>
     </property>
@@ -116,13 +114,16 @@
    </property>
   </action>
   <action name="actionX_plot">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Statistic</string>
    </property>
   </action>
   <action name="action2_var_plot">
    <property name="text">
-    <string>2-var plot</string>
+    <string>Time plot</string>
    </property>
   </action>
  </widget>

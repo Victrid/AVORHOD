@@ -21,7 +21,7 @@ private:
 public:
     QueryMaster();
     ~QueryMaster();
-    void comm();
+    void connection_established_();
 public slots:
     void load_database_(QString directory, QString grid);
     void query_(QString qwords);

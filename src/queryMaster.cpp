@@ -7,7 +7,7 @@ QueryMaster::QueryMaster() {
     //connect(this, &queryMaster::startquery, dl, &dataLoader::query);
     connect(dl,&DatabaseManipulator::change_statusbar_,this, &QueryMaster::change_statusbar_);
     connect(dl,&DatabaseManipulator::database_loaded_,this,&QueryMaster::signal_update_complete_);
-    connect(this,&QueryMaster::query_,dl,&DatabaseManipulator::query_);
+    connect(this,&QueryMaster::query_start_,dl,&DatabaseManipulator::query_);
     connect(dl,&DatabaseManipulator::query_done_,this,&QueryMaster::signal_query_done_);
     query_thread_.start();
 }
@@ -16,7 +16,7 @@ QueryMaster::~QueryMaster(){
     query_thread_.terminate();
 }
 
-void QueryMaster::comm(){
+void QueryMaster::connection_established_(){
     emit change_statusbar_("Database connection established.",100,100);
 }
 
@@ -35,7 +35,7 @@ void QueryMaster::load_database_(QString directory, QString grid){
 
 void QueryMaster::query_(QString qwords){
     emit change_statusbar_("Querying in progress",0,100);
-    emit query_(qwords);
+    emit query_start_(qwords);
 }
 
 void QueryMaster::signal_query_done_(QSqlQuery *q){

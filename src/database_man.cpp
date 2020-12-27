@@ -1,4 +1,5 @@
 #include "database_man.hpp"
+#include <QtDebug>
 
 void DatabaseManipulator::load_database_(QString directory, QString grid){
     bool retval = true;
